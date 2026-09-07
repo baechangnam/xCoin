@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/warningRoot" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#100C0D">
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_vertical" android:padding="28dp">
+            <View android:layout_width="48dp" android:layout_height="5dp" android:background="#FF554F" android:importantForAccessibility="no"/>
+            <TextView android:id="@+id/warningBadge" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" android:text="@string/warning_stop_badge" android:textColor="#FF8A80" android:textSize="14sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/warningTitle" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="24dp" android:textColor="#FFF5F3" android:textSize="36sp" android:textStyle="bold" android:lineSpacingExtra="4dp"/>
+            <TextView android:id="@+id/warningMessage" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" android:textColor="#FFB6AD" android:textSize="20sp" android:lineSpacingExtra="5dp"/>
+            <com.google.android.material.card.MaterialCardView android:id="@+id/warningReasonCard"
+                android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="36dp"
+                app:cardBackgroundColor="#24181B" app:cardCornerRadius="18dp" app:cardElevation="0dp" app:strokeWidth="1dp" app:strokeColor="#533037">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="22dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/warning_reason_heading"
+                        android:textColor="#D7AAA8" android:textSize="13sp" android:textStyle="bold"/>
+                    <TextView android:id="@+id/warningReason" android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp" android:textColor="#FFF5F3" android:textSize="20sp" android:lineSpacingExtra="4dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <TextView android:id="@+id/warningContext" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="24dp" android:textColor="#BDA7AA" android:textSize="13sp" android:lineSpacingExtra="3dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+        <com.google.android.material.button.MaterialButton android:id="@+id/homeButton" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:minHeight="60dp" android:insetTop="0dp" android:insetBottom="0dp" android:text="@string/warning_stop_home" android:textColor="#FFFFFF"
+            android:textSize="18sp" android:textStyle="bold" app:backgroundTint="#BB302D" app:cornerRadius="16dp"/>
+        <com.google.android.material.button.MaterialButton android:id="@+id/closeButton" style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:minHeight="48dp"
+            android:text="@string/warning_preview_close" android:textColor="#D7AAA8" android:visibility="gone"/>
+    </LinearLayout>
+</LinearLayout>

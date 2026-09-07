@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/mainRoot" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/main_background">
+    <androidx.core.widget.NestedScrollView android:id="@+id/mainScroll" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:fillViewport="true">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp" android:focusableInTouchMode="true">
+            <TextView style="@style/MainText.Eyebrow" android:text="@string/app_name"/>
+            <TextView style="@style/MainText.Heading" android:text="@string/main_heading" android:layout_marginTop="10dp"/>
+            <TextView style="@style/MainText.Body" android:text="@string/main_intro" android:layout_marginTop="8dp"/>
+            <com.google.android.material.card.MaterialCardView style="@style/MainCard" app:cardBackgroundColor="@color/main_hero" app:strokeWidth="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="22dp">
+                    <TextView style="@style/MainText.Eyebrow" android:text="@string/monitoring_card_label" android:textColor="#B9DCD5"/>
+                    <TextView style="@style/MainText.Section" android:text="@string/monitoring_disabled" android:id="@+id/monitoringStatus" android:layout_marginTop="12dp" android:accessibilityLiveRegion="polite" android:textColor="@color/white"/>
+                    <TextView style="@style/MainText.Body" android:text="@string/monitoring_disabled_help" android:id="@+id/monitoringDescription" android:layout_marginTop="8dp" android:textColor="#D4E7E2"/>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/openAccessibilityButton" style="@style/MainButton" android:text="@string/open_accessibility_settings" android:layout_marginTop="16dp" app:backgroundTint="#D4F5E9" android:textColor="#143D34"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView style="@style/MainCard">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+                    <TextView style="@style/MainText.Section" android:text="@string/search_section"/>
+                    <TextView style="@style/MainText.Body" android:text="@string/search_detection_help" android:layout_marginTop="6dp"/>
+                    <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/searchDetectionSwitch" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp" android:layout_marginTop="8dp" android:text="@string/search_detection_label" android:textColor="@color/main_text" app:useMaterialThemeColors="true"/>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="@string/search_keywords_label" app:boxBackgroundColor="@color/main_input" app:boxCornerRadiusTopStart="14dp" app:boxCornerRadiusTopEnd="14dp" app:boxCornerRadiusBottomStart="14dp" app:boxCornerRadiusBottomEnd="14dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/searchKeywordsInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:minLines="3" android:maxLines="5" android:gravity="top|start" android:inputType="textMultiLine|textNoSuggestions" android:importantForAutofill="no" android:padding="16dp" android:textColor="@color/main_text" android:textSize="14sp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <TextView style="@style/MainText.Body" android:text="@string/search_detection_note" android:layout_marginTop="12dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView style="@style/MainCard">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+                    <TextView style="@style/MainText.Section" android:text="@string/sites_section"/>
+                    <TextView style="@style/MainText.Body" android:text="@string/sites_section_help" android:layout_marginTop="6dp"/>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/selectCoinSitesButton" style="@style/MainButton.Outline" android:text="@string/coin_sites_title" android:layout_marginTop="16dp"/>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:hint="@string/sites_input_label" app:boxCornerRadiusTopStart="14dp" app:boxCornerRadiusTopEnd="14dp" app:boxCornerRadiusBottomStart="14dp" app:boxCornerRadiusBottomEnd="14dp" app:boxBackgroundColor="@color/main_input">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/blockedSitesInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:minLines="3" android:maxLines="5" android:gravity="top|start" android:inputType="textMultiLine|textNoSuggestions" android:importantForAutofill="no" android:padding="16dp" android:textColor="@color/main_text" android:textSize="14sp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView style="@style/MainCard">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+                    <TextView style="@style/MainText.Section" android:text="@string/apps_section"/>
+                    <TextView style="@style/MainText.Body" android:text="@string/apps_section_help" android:layout_marginTop="6dp"/>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/selectCoinAppsButton" style="@style/MainButton.Outline" android:text="@string/coin_apps_title" android:layout_marginTop="16dp"/>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:hint="@string/apps_input_label" app:boxCornerRadiusTopStart="14dp" app:boxCornerRadiusTopEnd="14dp" app:boxCornerRadiusBottomStart="14dp" app:boxCornerRadiusBottomEnd="14dp" app:boxBackgroundColor="@color/main_input">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/blockedPackagesInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:minLines="3" android:maxLines="5" android:gravity="top|start" android:inputType="textMultiLine|textNoSuggestions" android:importantForAutofill="no" android:padding="16dp" android:textColor="@color/main_text" android:textSize="14sp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView style="@style/MainCard">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+                    <TextView style="@style/MainText.Section" android:text="@string/settings_section"/>
+                    <TextView style="@style/MainText.Body" android:text="@string/settings_section_help" android:layout_marginTop="6dp"/>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/openNotificationButton" style="@style/MainButton.Outline" android:text="@string/open_notification_settings" android:layout_marginTop="12dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView style="@style/MainCard">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+                    <TextView style="@style/MainText.Section" android:text="@string/warning_customization_title"/>
+                    <TextView style="@style/MainText.Body" android:text="@string/warning_customization_help" android:layout_marginTop="6dp"/>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="@string/warning_title_label" app:boxBackgroundColor="@color/main_input">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/warningTitleInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine|textCapSentences" android:minLines="2" android:maxLines="4" android:maxLength="100" android:gravity="top|start" android:importantForAutofill="no" android:padding="16dp" android:textColor="@color/main_text" android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="@string/warning_subtitle_label" app:boxBackgroundColor="@color/main_input">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/warningSubtitleInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine|textCapSentences" android:minLines="2" android:maxLines="4" android:maxLength="200" android:gravity="top|start" android:importantForAutofill="no" android:padding="16dp" android:textColor="@color/main_text" android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="@string/warning_reason_label" app:boxBackgroundColor="@color/main_input">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/warningReasonInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine|textCapSentences" android:minLines="2" android:maxLines="4" android:maxLength="500" android:gravity="top|start" android:importantForAutofill="no" android:padding="16dp" android:textColor="@color/main_text" android:textSize="15sp" android:hint="@string/warning_reason_hint"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/testWarningButton" style="@style/MainButton.Outline" android:text="@string/test_warning_button" android:layout_marginTop="16dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <TextView style="@style/MainText.Body" android:text="@string/main_scope_note" android:layout_marginTop="16dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@color/main_card" android:paddingStart="20dp" android:paddingEnd="20dp" android:paddingTop="10dp" android:paddingBottom="10dp">
+        <com.google.android.material.button.MaterialButton android:id="@+id/saveButton" style="@style/MainButton" android:text="@string/save_rules"/>
+        <TextView style="@style/MainText.Caption" android:text="@string/save_rules_hint" android:gravity="center" android:layout_marginTop="4dp"/>
+    </LinearLayout>
+</LinearLayout>
