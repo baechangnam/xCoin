@@ -87,6 +87,10 @@ public final class AlertDispatcher {
 
         NotificationChannel existing = notificationManager.getNotificationChannel(CHANNEL_ID);
         if (existing != null) {
+            // Refresh display text after a rename without changing user notification settings.
+            existing.setName(context.getString(R.string.alert_channel_name));
+            existing.setDescription(context.getString(R.string.alert_channel_description));
+            notificationManager.createNotificationChannel(existing);
             return;
         }
 

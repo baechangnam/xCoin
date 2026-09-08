@@ -24,6 +24,10 @@ public class ForbiddenAccessibilityService extends AccessibilityService {
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
+        // Also guards users enabling the service directly in system settings.
+        if (!AccessibilityConsent.isGranted(this)) {
+            return;
+        }
         if (event == null || event.getPackageName() == null) {
             return;
         }

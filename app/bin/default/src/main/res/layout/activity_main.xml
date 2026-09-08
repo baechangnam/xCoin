@@ -11,7 +11,6 @@
                     <TextView style="@style/MainText.Section" android:text="@string/monitoring_disabled" android:id="@+id/monitoringStatus" android:layout_marginTop="12dp" android:accessibilityLiveRegion="polite" android:textColor="@color/white"/>
                     <TextView style="@style/MainText.Body" android:text="@string/monitoring_disabled_help" android:id="@+id/monitoringDescription" android:layout_marginTop="8dp" android:textColor="#D4E7E2"/>
                     <com.google.android.material.button.MaterialButton android:id="@+id/openAccessibilityButton" style="@style/MainButton" android:text="@string/open_accessibility_settings" android:layout_marginTop="16dp" app:backgroundTint="#D4F5E9" android:textColor="#143D34"/>
-                    <com.google.android.material.button.MaterialButton android:id="@+id/revokeConsentButton" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:text="@string/consent_revoke" android:textColor="#D4E7E2" android:visibility="gone"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView style="@style/MainCard">

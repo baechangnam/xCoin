@@ -37,10 +37,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText warningReasonInput;
     private EditText searchKeywordsInput;
     private SwitchMaterial searchDetectionSwitch;
+    private boolean consentPromptShown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        consentPromptShown = savedInstanceState != null
+                && savedInstanceState.getBoolean("consent_prompt_shown", false);
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(R.layout.activity_main);
         applyWindowInsets();
@@ -84,8 +87,12 @@ public class MainActivity extends AppCompatActivity {
                 .setItems(R.array.coin_app_categories, (dialog, which) -> showCoinApps(which))
                 .setNegativeButton(android.R.string.cancel, null)
                 .show());
-        accessibilityButton.setOnClickListener(v ->
-                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)));
+        accessibilityButton.setOnClickListener(v -> openAccessibilityWithConsent());
+        findViewById(R.id.revokeConsentButton).setOnClickListener(v -> {
+            AccessibilityConsent.revoke(this);
+            updateMonitoringStatus();
+            Toast.makeText(this, R.string.consent_revoked, Toast.LENGTH_LONG).show();
+        });
         notificationButton.setOnClickListener(v -> openNotificationSettings());
         testWarningButton.setOnClickListener(v -> startActivity(new Intent(this, WarningActivity.class)
                 .putExtra(WarningActivity.EXTRA_PREVIEW, true)
@@ -93,13 +100,36 @@ public class MainActivity extends AppCompatActivity {
                 .putExtra(WarningPreferences.SUBTITLE, warningSubtitleInput.getText().toString())
                 .putExtra(WarningPreferences.REASON, warningReasonInput.getText().toString())));
 
-        requestNotificationPermissionIfNeeded();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         updateMonitoringStatus();
+        if (!AccessibilityConsent.isGranted(this) && !consentPromptShown) {
+            showAccessibilityConsent();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean("consent_prompt_shown", consentPromptShown);
+        super.onSaveInstanceState(outState);
+    }
+
+    private void showAccessibilityConsent() {
+        consentPromptShown = true;
+        if (getSupportFragmentManager().findFragmentByTag(AccessibilityConsentDialog.TAG) == null) {
+            new AccessibilityConsentDialog().show(getSupportFragmentManager(), AccessibilityConsentDialog.TAG);
+        }
+    }
+
+    private void openAccessibilityWithConsent() {
+        if (!AccessibilityConsent.isGranted(this)) {
+            showAccessibilityConsent();
+        } else {
+            startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+        }
     }
 
     private void applyWindowInsets() {
@@ -137,11 +167,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateMonitoringStatus() {
-        boolean enabled = isMonitoringEnabled();
+        boolean consent = AccessibilityConsent.isGranted(this);
+        findViewById(R.id.revokeConsentButton).setVisibility(consent ? View.VISIBLE : View.GONE);
+        boolean enabled = consent && isMonitoringEnabled();
         monitoringStatus.setText(enabled
                 ? R.string.monitoring_enabled : R.string.monitoring_disabled);
         TextView description = findViewById(R.id.monitoringDescription);
-        description.setText(enabled ? R.string.monitoring_enabled_help : R.string.monitoring_disabled_help);
+        description.setText(!consent ? R.string.consent_required_help
+                : enabled ? R.string.monitoring_enabled_help : R.string.monitoring_disabled_help);
     }
 
     private void saveRules() {
@@ -156,12 +189,14 @@ public class MainActivity extends AppCompatActivity {
         );
         Toast.makeText(this, R.string.rules_saved, Toast.LENGTH_SHORT).show();
         updateMonitoringStatus();
-        if (!isMonitoringEnabled()) {
+        if (!AccessibilityConsent.isGranted(this)) {
+            showAccessibilityConsent();
+        } else if (!isMonitoringEnabled()) {
             new AlertDialog.Builder(this)
                     .setTitle(R.string.monitoring_setup_title)
                     .setMessage(R.string.monitoring_setup_message)
                     .setPositiveButton(R.string.open_accessibility_settings, (dialog, which) ->
-                            startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)))
+                            openAccessibilityWithConsent())
                     .setNegativeButton(R.string.monitoring_setup_later, null)
                     .show();
         }
@@ -255,6 +290,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openNotificationSettings() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+                && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)
+                != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            requestNotificationPermissionIfNeeded();
+            return;
+        }
         Intent intent;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             intent = new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)

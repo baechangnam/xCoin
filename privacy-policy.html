@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="코인스톱의 정보 처리, 접근성 권한 사용, 보관 및 삭제 방법을 안내합니다.">
+  <title>코인스톱 개인정보처리방침</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f3f7f5; color: #20382f; font-family: system-ui, -apple-system, "Noto Sans KR", sans-serif; line-height: 1.8; word-break: keep-all; overflow-wrap: anywhere; }
+    main { max-width: 800px; margin: 40px auto; padding: 40px; background: #fff; border: 1px solid #dfebe4; border-radius: 24px; }
+    .brand { margin: 0; color: #24735c; font-weight: 700; }
+    h1 { font-size: clamp(1.6rem, 5vw, 2rem); line-height: 1.4; margin: 8px 0 16px; }
+    h2 { margin: 30px 0 8px; font-size: 1.12rem; }
+    p, ul { margin: 8px 0; }
+    ul { padding-left: 22px; }
+    .notice { padding: 16px 20px; background: #edf6f1; border-radius: 12px; }
+    .meta { color: #596d63; font-size: .92rem; }
+    footer { border-top: 1px solid #dfebe4; margin-top: 32px; padding-top: 16px; }
+    @media (max-width: 600px) { main { margin: 0; padding: 28px 20px; border: 0; border-radius: 0; } }
+  </style>
+</head>
+<body>
+  <!-- 게시 전 [개발자명], [문의 이메일], [시행일]을 실제 정보로 변경하세요. -->
+  <main>
+    <header>
+      <p class="brand">코인스톱</p>
+      <h1>개인정보처리방침</h1>
+      <p class="meta">시행일: [2026-09-08]</p>
+    </header>
+    <p>코인스톱은 사용자가 정한 코인 관련 앱·사이트·검색 키워드에 따라 접근을 감지하고 경고하여 이용 조절을 돕는 앱입니다. 이 방침은 앱에서 처리하는 정보와 사용자의 선택권을 설명합니다.</p>
+    <p class="notice">코인스톱은 감지한 앱 사용·방문·검색 이력을 기록하여 보관하거나 개발자 서버로 전송하지 않습니다. 사용자가 설정한 차단 목록과 경고 문구 등은 기기에 저장됩니다.</p>
+
+    <section aria-labelledby="data">
+      <h2 id="data">1. 처리하는 정보와 목적</h2>
+      <ul>
+        <li><strong>현재 앱 식별 정보:</strong> 차단 목록에 등록된 앱인지 확인하고 홈 이동 및 경고에 사용합니다.</li>
+        <li><strong>Chrome 주소창의 주소·도메인:</strong> 등록된 사이트 접근을 감지하고 경고하는 데 사용합니다.</li>
+        <li><strong>Chrome 주소창의 검색어 또는 검색 결과 주소:</strong> 검색어 감지 기능을 켠 경우에만 등록된 키워드와 비교합니다. 웹페이지 본문이나 메시지 내용은 검사하지 않습니다.</li>
+        <li><strong>설치 이벤트의 앱 식별 정보:</strong> Android가 앱 설치 이벤트를 전달하는 경우 등록된 앱인지 확인하고 경고하는 데 사용합니다.</li>
+        <li><strong>사용자 설정:</strong> 차단 앱·사이트 목록, 검색 키워드와 기능 설정, 경고 문구와 다짐, 접근성 정보 사용 동의 상태를 기기에 저장하여 기능 제공에 사용합니다.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="permissions">
+      <h2 id="permissions">2. 접근성 서비스 및 알림 권한</h2>
+      <p>접근성 정보는 앱 내 설명에 동의하고 Android 설정에서 서비스를 켠 경우에 사용합니다. 서비스가 활성화된 동안 다른 앱 사용 중에도 위 정보를 확인할 수 있습니다. 동의하지 않아도 차단 목록 편집과 경고 미리보기를 사용할 수 있습니다.</p>
+      <p>메인 화면의 ‘접근성 동의 철회’로 접근성 정보 처리를 중지하거나, Android 설정 → 접근성 → 설치된 앱 → 코인스톱 코인 감지 서비스에서 ‘사용하기’를 끌 수 있습니다. 검색어 감지는 앱에서 별도로 끌 수 있습니다. 동의 철회 시 기존 차단 목록 등 설정은 삭제되지 않습니다.</p>
+      <p>알림 권한은 감지 경고를 알림으로 표시하는 데 사용하며, Android 알림 설정에서 변경할 수 있습니다. 설정 경로와 명칭은 기기에 따라 다를 수 있습니다.</p>
+    </section>
+
+    <section aria-labelledby="sharing">
+      <h2 id="sharing">3. 외부 전송 및 제3자 제공</h2>
+      <p>앱은 위 정보를 개발자 서버 또는 광고·분석 업체로 전송하거나 판매하지 않습니다. 회원가입, 광고 및 외부 분석 SDK를 사용하지 않습니다.</p>
+      <p>다만 사용자 설정은 Android 및 백업 제공자 설정에 따라 시스템 백업이나 기기 이전에 포함될 수 있습니다. 접근성 동의 상태는 앱의 백업·기기 이전 대상에서 제외합니다. 시스템 백업은 해당 제공자의 정책과 사용자 설정에 따라 처리되며 개발자가 접근하지 않습니다.</p>
+    </section>
+
+    <section aria-labelledby="retention">
+      <h2 id="retention">4. 보관 및 삭제</h2>
+      <p>감지 정보는 기능 수행 중 일시적으로 사용하며 별도의 이용 이력으로 보관하지 않습니다. 경고 화면이나 알림에는 감지 대상 정보가 표시될 수 있으며, 알림은 사용자가 지울 수 있습니다.</p>
+      <p>사용자 설정은 변경하거나 앱 데이터를 삭제할 때까지 기기에 보관합니다. Android 설정 → 앱 → 코인스톱 → 저장공간 → 데이터 삭제 또는 앱 삭제로 기기 내 저장 데이터를 삭제할 수 있습니다. 시스템 백업 사본은 별도로 남거나 재설치 시 복원될 수 있으므로 백업 제공자의 설정에서 관리해 주세요.</p>
+    </section>
+
+    <section aria-labelledby="security">
+      <h2 id="security">5. 정보 보호</h2>
+      <p>앱 설정은 Android가 다른 일반 앱의 직접 접근을 제한하는 앱 전용 저장공간에 보관합니다. 기능에 필요한 정보만 처리하며 방문·검색 이력을 별도로 저장하지 않습니다.</p>
+    </section>
+
+    <section aria-labelledby="contact">
+      <h2 id="contact">6. 문의 및 방침 변경</h2>
+      <p>개인정보 관련 문의나 권리 행사 요청은 아래 연락처로 보내 주세요. 개발자는 기기에 저장된 설정에 직접 접근할 수 없으므로 기기 내 데이터 확인·삭제 방법을 안내합니다.</p>
+      <ul>
+        <li>운영자 및 개인정보 문의 담당: 로그캣</li>
+        <li>이메일: vicjoa@naver.com</li>
+      </ul>
+      <p>처리 방식이 변경되면 이 페이지에 변경 내용과 시행일을 안내하며, 필요한 경우 앱 내 안내 및 동의를 진행합니다.</p>
+    </section>
+    <footer class="meta">코인스톱 · 개인정보처리방침</footer>
+  </main>
+</body>
+</html>

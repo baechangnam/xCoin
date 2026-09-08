@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<resources>
+    <color name="main_background">#101916</color>
+    <color name="main_card">#1A2722</color>
+    <color name="main_input">#14201B</color>
+    <color name="main_text">#E8F3ED</color>
+    <color name="main_muted">#ACBFB4</color>
+    <color name="main_accent">#65CAA5</color>
+    <color name="main_hero">#153F35</color>
+    <color name="main_stroke">#34473D</color>
+    <color name="main_on_accent">#10291E</color>
+</resources>
